@@ -1,0 +1,12 @@
+.intro {
+  background-color: #2a3a54;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.intro__text {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: justify;
+}

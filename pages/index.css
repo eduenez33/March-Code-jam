@@ -1,0 +1,54 @@
+@import url(../vendor/normalize.css);
+/*Add font import after all the fonts*/
+@import url(../blocks/page.css);
+@import url(../blocks/main.css);
+@import url(../blocks/header.css);
+@import url(../blocks/intro.css);
+@import url(../blocks/quiz.css);
+@import url(../blocks/social.css);
+@import url(../blocks/cards.css);
+@import url(../blocks/card.css);
+@import url(../blocks/eco-squad.css);
+@import url(../blocks/popup.css);
+@import url(../blocks/footer.css);
+
+@media (max-width: 768px) {
+  .eco-squad__features {
+    grid-template-columns: 1fr;
+  }
+
+  .eco-squad__stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .eco-squad {
+    padding: 40px 20px;
+  }
+
+  .cards__container {
+    animation: scrollCards 20s linear infinite;
+  }
+
+  .card {
+    min-width: 240px;
+  }
+
+  @keyframes scrollCards {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-240px * 4 - 80px));
+    }
+  }
+}
+
+@keyframes scrollCards {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-280px * 4 - 80px));
+  }
+}

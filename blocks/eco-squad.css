@@ -1,0 +1,125 @@
+.eco-squad {
+  background-color: #2a3a54;
+  padding: 60px 40px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.eco-squad__label {
+  display: inline-block;
+  background-color: #4a5a74;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.eco-squad__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.eco-squad__text {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eco-squad__stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.eco-squad__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eco-squad__stat-number {
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #5a7aff;
+  margin-bottom: 8px;
+}
+
+.eco-squad__stat-label {
+  font-size: 16px;
+  color: #a0a0a0;
+}
+
+.eco-squad__features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eco-squad__feature {
+  background-color: #4a5a74;
+  padding: 30px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.eco-squad__feature:hover {
+  transform: translateY(-5px);
+}
+
+.eco-squad__feature-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.eco-squad__feature-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #5a7aff;
+}
+
+.eco-squad__feature-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+.eco-squad__options {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.eco-squad__button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  background-color: #4a5a74;
+  padding: 15px 30px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+}
+
+.eco-squad__button:hover {
+  transform: translateY(-2px);
+  background-color: #5a7aff;
+  box-shadow: 0 4px 12px rgba(90, 122, 255, 0.3);
+}
+

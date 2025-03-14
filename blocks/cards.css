@@ -1,0 +1,17 @@
+.cards {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+  margin-bottom: 20px;
+}
+
+.cards__container {
+  display: flex;
+  gap: 20px;
+  animation: scrollCards 30s linear infinite;
+  padding: 0 20px;
+}
+
+.cards__container:hover {
+  animation-play-state: paused;
+}

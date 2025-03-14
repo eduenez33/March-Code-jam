@@ -1,0 +1,13 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: "Quicksand", sans-serif;
+  background-color: #1a2a44;
+  color: #ffffff;
+  padding: 20px;
+}
