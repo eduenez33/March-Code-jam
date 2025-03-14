@@ -1,0 +1,30 @@
+.social {
+  display: flex;
+  gap: 10px;
+}
+
+.social__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.social__icon--facebook {
+  background-color: #3b5998;
+}
+
+.social__icon--x {
+  background-color: #000000;
+}
+
+.social__icon--instagram {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
+  );
+}
