@@ -1,5 +1,5 @@
 @import url(../vendor/normalize.css);
-/*Add font import after all the fonts*/
+@import url(../vendor/fonts/Jura.ttf); /*Not working on live server will look into*/
 @import url(../blocks/page.css);
 @import url(../blocks/main.css);
 @import url(../blocks/header.css);

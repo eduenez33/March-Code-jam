@@ -1,30 +1,23 @@
 .social {
   display: flex;
   gap: 10px;
+  justify-content: space-around;
 }
 
 .social__icon {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border: none;
 }
 
-.social__icon--facebook {
-  background-color: #3b5998;
-}
-
-.social__icon--x {
-  background-color: #000000;
-}
-
-.social__icon--instagram {
-  background: linear-gradient(
-    45deg,
-    #405de6,
-    #5851db,
-    #833ab4,
-    #c13584,
-    #e1306c,
-    #fd1d1d
-  );
+.social__title {
+  font-family: "Jura", "Montserrat", sans-serif;
+  font-size: 21px;
+  text-align: center;
+  line-height: 1;
+  font-weight: 600;
+  margin-bottom: 40px;
+  max-width: 430px;
+  max-height: 50px;
+  font-weight: 600;
 }
