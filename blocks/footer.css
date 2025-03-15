@@ -1,6 +1,10 @@
 .footer {
   margin-top: 20px;
   text-align: center;
+  background-image: url(../images/Earth.jpg);
+  background-repeat: no-repeat;
+  background-position: fill;
+  background-size: 100%;
 }
 
 .footer__list {
