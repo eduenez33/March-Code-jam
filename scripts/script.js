@@ -4,19 +4,119 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButton = document.querySelector(".popup__close");
   const joinButton = document.querySelector(".popup__join-button");
 
-  // Open popup
+  // Quiz elements
+  const quizPopup = document.querySelector(".quiz__pop-up");
+  const quizButton = document.querySelector(".quiz__button");
+  let currentQuestion = 0;
+  let userAnswers = [];
+
+  // Quiz button click handler
+  quizButton.addEventListener("click", () => {
+    quizPopup.classList.add("quiz__pop-up_opened");
+    displayQuestion(currentQuestion);
+  });
+
+  // Function to display current question
+  function displayQuestion(index) {
+    const questionElement = document.getElementById("question");
+    const answersContainer = document.getElementById("answers");
+
+    if (index < question.length) {
+      questionElement.textContent = question[index].name;
+      answersContainer.innerHTML = "";
+
+      // Get answers for current question (4 answers per question)
+      const startIndex = index * 4;
+      for (let i = 0; i < 4; i++) {
+        const answer = answers[startIndex + i];
+        const button = document.createElement("button");
+        button.className = "quiz__button";
+        button.textContent = answer.name;
+        button.value = answer.value;
+
+        button.addEventListener("click", () => {
+          userAnswers.push(parseInt(button.value));
+          currentQuestion++;
+
+          if (currentQuestion < question.length) {
+            displayQuestion(currentQuestion);
+          } else {
+            showResult();
+          }
+        });
+
+        answersContainer.appendChild(button);
+      }
+    }
+  }
+
+  // Function to show quiz result
+  function showResult() {
+    const questionElement = document.getElementById("question");
+    const answersContainer = document.getElementById("answers");
+    const total = userAnswers.reduce((sum, value) => sum + value, 0);
+    let result;
+
+    // Find appropriate result based on total score
+    if (total <= 8) {
+      result = results[0];
+    } else if (total <= 12) {
+      result = results[1];
+    } else if (total <= 16) {
+      result = results[2];
+    } else {
+      result = results[3];
+    }
+
+    // Display result
+    questionElement.textContent = "Your EcoPersona Result:";
+    answersContainer.innerHTML = `
+      <div class="quiz__result">
+        <p>${result.name}</p>
+        <button class="quiz__button" id="restartQuiz">Take Quiz Again</button>
+      </div>
+    `;
+
+    // Add restart button functionality
+    document.getElementById("restartQuiz").addEventListener("click", () => {
+      currentQuestion = 0;
+      userAnswers = [];
+      displayQuestion(currentQuestion);
+    });
+  }
+
+  // Close quiz when clicking outside
+  quizPopup.addEventListener("click", (e) => {
+    if (e.target === quizPopup) {
+      quizPopup.classList.remove("quiz__pop-up_opened");
+      currentQuestion = 0;
+      userAnswers = [];
+    }
+  });
+
+  // Close quiz with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      quizPopup.classList.contains("quiz__pop-up_opened")
+    ) {
+      quizPopup.classList.remove("quiz__pop-up_opened");
+      currentQuestion = 0;
+      userAnswers = [];
+    }
+  });
+
+  // Eco-squad popup functionality
   openButton.addEventListener("click", () => {
     popup.classList.add("active");
-    document.body.style.overflow = "hidden"; // Prevent scrolling when popup is open
+    document.body.style.overflow = "hidden";
   });
 
-  // Close popup
   closeButton.addEventListener("click", () => {
     popup.classList.remove("active");
-    document.body.style.overflow = ""; // Restore scrolling
+    document.body.style.overflow = "";
   });
 
-  // Close popup when clicking outside
   popup.addEventListener("click", (e) => {
     if (e.target === popup) {
       popup.classList.remove("active");
@@ -24,9 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Handle join button click
   joinButton.addEventListener("click", () => {
-    // Here you would typically handle the join group functionality
     alert(
       "Thank you for joining! We'll send you more details about the upcoming activity."
     );
@@ -34,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   });
 
-  // Close popup with Escape key
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && popup.classList.contains("active")) {
       popup.classList.remove("active");
@@ -47,145 +144,158 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const question = [
   {
-    name:"Question 1: How do you prefer to spend you free time?",
+    name: "Question 1: How do you prefer to spend you free time?",
     id: "Question-1__title",
   },
   {
-    name:"Question 2: How much time do you want to commit?",
-    id:"Question-2__title",
+    name: "Question 2: How much time do you want to commit?",
+    id: "Question-2__title",
   },
   {
-    name:"Question 3: What's your main motivation for celebrating Earth Day?",
+    name: "Question 3: What's your main motivation for celebrating Earth Day?",
     id: "Question-3__title",
   },
   {
-    name:"Question 4: Which of these do you enjoy the most?",
+    name: "Question 4: Which of these do you enjoy the most?",
     id: "Question-4__title",
   },
   {
-    name:"Question 5: Do you prefer solo activiites or group efforts?",
+    name: "Question 5: Do you prefer solo activiites or group efforts?",
     id: "Question-5__title",
-  }
-]
+  },
+];
 
 const answers = [
-  //Value 1 or A's
+  // Question 1: How do you prefer to spend your free time?
   {
-    name:"Outdoors, being active",
+    name: "Finding a peaceful spot in nature to recharge",
     value: 1,
-    id:"Question-1__answer",
+    id: "Question-1__answer",
   },
   {
-    name:"A few hours outdoors",
-    value: 1,
-    id:"Question-2__answer",
+    name: "Meeting up with a close friend for a nature walk",
+    value: 2,
+    id: "Question-1__answer",
   },
   {
-    name:"Helping clean up and protect the environment",
-    value: 1,
-    id:"Question-3__answer",
-  },{
-    name:"Walking, hiking, or exploring nature",
-    value: 1,
-    id:"Question-4__answer",
-  },{
-    name:"I like working alone or with close family",
-    value: 1,
-    id:"Question-5__answer",
+    name: "Joining local meetups for outdoor activities",
+    value: 3,
+    id: "Question-1__answer",
+  },
+  {
+    name: "Planning and hosting environmental events",
+    value: 4,
+    id: "Question-1__answer",
   },
 
-  //Value 2 or B's
+  // Question 2: How much time do you want to commit?
   {
-    name:"Doing hands-on projects",
+    name: "Just an hour or two when it fits my schedule",
+    value: 1,
+    id: "Question-2__answer",
+  },
+  {
+    name: "A weekend project with a few friends",
     value: 2,
-    id:"question-1__answer",
-  },{
-    name:"A whole day for a meaningful project",
-    value: 2,
-    id:"question-2__answer",
-  },{
-    name:"Supporting nature and wildlife",
-    value: 2,
-    id:"question-3__answer",
-  },{
-    name:"Gardening, DIY projects, or crafting",
-    value: 2,
-    id:"question-4__answer",
-  },{
-    name:"I enjoy DIY projects at my own pace",
-    value: 2,
-    id:"question-5__answer",
+    id: "Question-2__answer",
   },
-  //Value 3 or C's
   {
-    name:"Learning new things and sharing knowledge",
+    name: "Weekly meetups with the community",
     value: 3,
-    id:"question-1__answer",
-  },{
-    name:"Just a small change in my routine",
-    value: 3,
-    id:"question-2__answer",
-  },{
-    name:"Raising awareness and inspiring others",
-    value: 3,
-    id:"question-3__answer",
-  },{
-    name:"Organizing or social events",
-    value: 3,
-    id:"question-4__answer",
+    id: "Question-2__answer",
   },
   {
-    name:" I love being part of a community or group",
-    value: 3,
-    id:"question-5__answer",
-  },
-  {
-    name:"Making small but impactful changes in daily life",
+    name: "Dedicated time to organize and lead initiatives",
     value: 4,
-    id:"question-1__answer",
-  },
-  {
-    name:"I’d love something ongoing",
-    value: 4,
-    id:"question-2__answer",
-  },
-  {
-    name:"Reducing waste and living more sustainably",
-    value: 4,
-    id:"question-3__answer",
-  },
-  {
-    name:"Trying new eco-friendly habits",
-    value: 4,
-    id:"question-4__answer",
-  },
-  {
-    name:"I like a mix of both",
-    value: 4,
-    id:"question-5__answer",
+    id: "Question-2__answer",
   },
 
-]
+  // Question 3: What's your main motivation for celebrating Earth Day?
+  {
+    name: "To reflect on my environmental impact",
+    value: 1,
+    id: "Question-3__answer",
+  },
+  {
+    name: "To share eco-friendly tips with friends",
+    value: 2,
+    id: "Question-3__answer",
+  },
+  {
+    name: "To participate in community action",
+    value: 3,
+    id: "Question-3__answer",
+  },
+  {
+    name: "To inspire widespread environmental change",
+    value: 4,
+    id: "Question-3__answer",
+  },
 
-const results =[
+  // Question 4: Which of these do you enjoy the most?
   {
-    name:"Going Car-Free:You enjoy being active outdoors, making clean-ups or nature-focused activities a great fit!",
-    value: 4, 5, 6, 7,
-    id:"result_A"
+    name: "Tending to my own garden sanctuary",
+    value: 1,
+    id: "Question-4__answer",
   },
   {
-    name:"Plant a Tree, Start a Garden, Build a Birdhouse:You like hands-on projects that help the environment grow and thrive."
-    value: 5, 6, 7, 8, 9, 10,
-    id:"result_B"
+    name: "Teaching friends about composting",
+    value: 2,
+    id: "Question-4__answer",
   },
   {
-    name:"Attend an Earth Day Event, Host a Clothing Swap: You enjoy social activities that raise awareness and inspire others."
-    value:11, 12, 13, 14, 15,
-    id:"result_C"
+    name: "Organizing neighborhood cleanups",
+    value: 3,
+    id: "Question-4__answer",
   },
   {
-    name:"Reduce, Reuse, Recycle Challenge, Switch to Sustainable Products:You prefer making small but impactful lifestyle changes for a greener future."
-    value:16, 17, 18, 19, 20,
-    id:"result_D"
+    name: "Creating environmental education programs",
+    value: 4,
+    id: "Question-4__answer",
   },
-]
+
+  // Question 5: Do you prefer solo activities or group efforts?
+  {
+    name: "I thrive on independent projects",
+    value: 1,
+    id: "Question-5__answer",
+  },
+  {
+    name: "I enjoy collaborating with close friends",
+    value: 2,
+    id: "Question-5__answer",
+  },
+  {
+    name: "I'm energized by group dynamics",
+    value: 3,
+    id: "Question-5__answer",
+  },
+  {
+    name: "I love coordinating large teams",
+    value: 4,
+    id: "Question-5__answer",
+  },
+];
+
+const results = [
+  {
+    name: "Solo Eco-Warrior: You prefer making individual impact through personal choices. Try activities like maintaining a home garden, adopting sustainable living practices, or taking solo nature walks to collect litter.",
+    values: [5, 6, 7, 8],
+    id: "result_A",
+  },
+  {
+    name: "Family & Friends Environmentalist: You enjoy making a difference with close ones. Consider starting a neighborhood composting program, organizing family beach cleanups, or creating a community garden with friends.",
+    values: [9, 10, 11, 12],
+    id: "result_B",
+  },
+  {
+    name: "Community Environmental Advocate: You thrive in group settings! Join local environmental organizations, participate in community cleanups, or help organize Earth Day events in your area.",
+    values: [13, 14, 15, 16],
+    id: "result_C",
+  },
+  {
+    name: "Environmental Movement Leader: You're a natural organizer and connector! Consider leading environmental workshops, starting your own eco-initiative, or becoming an environmental education coordinator in your community.",
+    values: [17, 18, 19, 20],
+    id: "result_D",
+  },
+];
