@@ -17,7 +17,7 @@
   height: 150px;
   background-color: #4a5a74;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   transition: background-color 0.3s ease;
 }
 
@@ -35,7 +35,14 @@
 }
 
 .card__title {
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  font-family: "Jura", "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  margin: auto;
+}
+
+.card__link{
+  text-decoration: none;
+  color: #fff;
+
 }
