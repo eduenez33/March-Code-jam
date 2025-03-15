@@ -1,10 +1,18 @@
 .eco-squad {
-  background-color: #2a3a54;
   padding: 60px 40px;
   border-radius: 10px;
   margin-bottom: 20px;
   text-align: center;
+  background-color: #2a3a54;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+/*.eco-squad__container{
+
+  z-index: 1;
+} tried to make background color reappear incase we didn't want to add extra content*/
 
 .eco-squad__label {
   display: inline-block;
@@ -29,6 +37,7 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 .eco-squad__stats {

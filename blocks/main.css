@@ -2,3 +2,10 @@
   max-width: 1440px;
   margin: 0 auto;
 }
+
+.main__content{
+  display: flex;
+  gap: 20px;
+  height: 400px;
+  justify-content: space-between;
+}

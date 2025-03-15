@@ -1,12 +1,21 @@
 .intro {
-  background-color: #2a3a54;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  margin: 0 0 20px 60px;
+  max-width: 800px;
+  max-height: 271px;
 }
 
 .intro__text {
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: justify;
+  padding-top: 40px;
+  font-size: 20px;
+  line-height: 2;
+  text-align: center;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  font-family: "Jura", "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.intro__emoji{
+  position: absolute;
+  padding: 0 390px;
+  margin: 0 auto;
 }
