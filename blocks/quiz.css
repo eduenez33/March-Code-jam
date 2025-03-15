@@ -4,6 +4,50 @@
   margin-bottom: 20px;
 }
 
+.quiz__pop-up{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  visibility: hidden;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.quiz__pop-up_opened{
+  visibility: visible;
+}
+
+.quiz__modal{
+  background-color: #2a3a54;
+  border-radius: 20px;
+  max-width: 600px;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  bottom: 30%;
+  right: 30%;
+  height: 450px;
+}
+
+.quiz__question{
+  font-family: "Jura", "Montserrat", sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 30px;
+  font-size: 24px;
+}
+
+.quiz__answers{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 40px;
+}
+
 .quiz__card,
 .quiz__social {
   background-color: #2a3a54;
