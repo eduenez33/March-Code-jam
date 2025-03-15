@@ -54,3 +54,17 @@
 .footer__copyright {
   padding-top: 20px;
 }
+
+@media (max-width: 1002px) {
+  .footer__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .footer__list-item {
+    padding: 20px;
+    text-align: center;
+  }
+}
