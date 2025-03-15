@@ -1,17 +1,16 @@
 .eco-squad {
-
   padding: 60px 40px;
   border-radius: 10px;
   margin-bottom: 20px;
   text-align: center;
-  background-image: url(../images/Earth.jpg);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% ;
+  background-color: #2a3a54;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*.eco-squad__container{
-  background-color: #2a3a54;
+
   z-index: 1;
 } tried to make background color reappear incase we didn't want to add extra content*/
 
