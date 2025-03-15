@@ -2,6 +2,52 @@
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
+  max-height: 202px;
+  flex-direction: column;
+}
+
+.quiz__pop-up{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  visibility: hidden;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.quiz__pop-up_opened{
+  visibility: visible;
+}
+
+.quiz__modal{
+  background-color: #2a3a54;
+  border-radius: 20px;
+  max-width: 600px;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  bottom: 30%;
+  right: 30%;
+  height: 450px;
+}
+
+.quiz__question{
+  font-family: "Jura", "Montserrat", sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 30px;
+  font-size: 24px;
+}
+
+.quiz__answers{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 40px;
 }
 
 .quiz__card,
@@ -22,15 +68,21 @@
 }
 
 .quiz__title {
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
+  font-family: "Jura", "Montserrat", sans-serif;
+  font-size: 21px;
+  text-align: center;
+  line-height: 2;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  max-width: 430px;
+  max-height: 50px;
+  font-weight: 600;
+
 }
 
 .quiz__button {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 600;
+  font-family: "Jura", "Montserrat", sans-serif;
+  font-weight: 1000;
   background-color: #5a7aff;
   color: #ffffff;
   border: none;
@@ -50,4 +102,9 @@
   background-color: #4a6aff;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.quiz__text-break{
+
+
 }
