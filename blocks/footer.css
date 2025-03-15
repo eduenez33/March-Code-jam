@@ -1,4 +1,51 @@
-footer {
+.footer {
   margin-top: 20px;
   text-align: center;
+}
+
+.footer__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer__list-item_name {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.footer__profile-picture {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-repeat: no-repeat;
+  border-radius: 100px;
+  box-shadow: 0px 0px 20px 0px white;
+}
+
+.footer__social-link {
+  color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  font-size: 24px;
+}
+
+.footer__social-icon {
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  object-fit: contain;
+}
+
+.footer__copyright {
+  padding-top: 20px;
 }
