@@ -1,5 +1,8 @@
 .header {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .header__title {
@@ -7,6 +10,19 @@
   font-size: 76px;
   font-weight: 700;
   color: #ffffff;
-  margin: 28px auto 0 60px;
-  text-align: justify;
+  margin: 28px 0 0;
+  padding-left: 60px;
+}
+
+@media (max-width: 1440px) {
+  .header {
+    padding: 0 20px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__title {
+    font-size: 48px;
+    padding-left: 20px;
+  }
 }
