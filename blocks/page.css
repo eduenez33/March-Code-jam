@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  position: relative;
 }
 
 .page {
@@ -9,4 +10,5 @@
   background-image: linear-gradient(#242e42 0%, #010101 50%);
   color: #ffffff;
   padding: 20px;
+  min-width: 550px;
 }

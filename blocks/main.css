@@ -7,19 +7,30 @@
 
 .main__content {
   display: flex;
-  height: 400px;
   justify-content: space-between;
 }
 
 .main__content_cards {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 20px;
 }
 
-/* @media (max-width: 1310px) {
+@media (max-width: 1290px) {
   .main__content {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-} */
+
+  .main__content_cards {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 775px) {
+  .main__content_cards {
+    flex-direction: column;
+  }
+}

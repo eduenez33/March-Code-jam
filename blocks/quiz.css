@@ -106,3 +106,10 @@
   font-size: 12px;
   margin-bottom: 10px;
 }
+
+@media (max-width: 1290px) {
+  .quiz__card {
+    justify-content: center;
+    align-items: center;
+  }
+}
