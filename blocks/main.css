@@ -7,14 +7,8 @@
 
 .main__content {
   display: flex;
-  justify-content: space-between;
-}
-
-.main__content_cards {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  gap: 20px;
+  flex-direction: row;
+  align-content: center;
 }
 
 @media (max-width: 1290px) {
@@ -30,7 +24,7 @@
 }
 
 @media (max-width: 775px) {
-  .main__content_cards {
+  .main__content{
     flex-direction: column;
   }
 }

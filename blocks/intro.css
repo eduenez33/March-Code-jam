@@ -8,7 +8,7 @@
   padding: 40px 10px 10px 0;
   font-size: 20px;
   line-height: 2;
-  text-align: center;
+  text-align: left;
   border-radius: 20px;
   margin-bottom: 15px;
   font-family: "Jura", "Montserrat", sans-serif;
@@ -17,12 +17,11 @@
   flex-direction: column;
 }
 
-.intro__emoji {
-  margin: 0 auto;
-}
-
 @media (max-width: 775px) {
   .intro {
     margin-left: 0;
+  }
+  .intro__text{
+    text-align: center;
   }
 }

@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     answersContainer.innerHTML = `
       <div class="quiz__result">
         <p>${result.name}</p>
-        <button class="quiz__button" id="restartQuiz">Take Quiz Again</button>
+        <button class="quiz__button-result" id="restartQuiz">Take Quiz Again</button>
       </div>
     `;
 
