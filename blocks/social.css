@@ -4,6 +4,12 @@
   justify-content: space-around;
 }
 
+.social__card {
+  background-color: #2a3a54;
+  padding: 20px;
+  border-radius: 10px;
+}
+
 .social__icon {
   width: 40px;
   height: 40px;
@@ -20,4 +26,9 @@
   max-width: 430px;
   max-height: 50px;
   font-weight: 600;
+}
+
+.social__logos {
+  display: flex;
+  justify-content: space-around;
 }
