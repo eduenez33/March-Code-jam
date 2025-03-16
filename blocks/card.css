@@ -4,7 +4,6 @@
   border-radius: 10px;
   text-align: center;
   min-width: 280px;
-  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
@@ -41,8 +40,7 @@
   margin: auto;
 }
 
-.card__link{
+.card__link {
   text-decoration: none;
   color: #fff;
-
 }

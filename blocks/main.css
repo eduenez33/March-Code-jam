@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-.main__content{
+.main__content {
   display: flex;
   gap: 20px;
   height: 400px;
