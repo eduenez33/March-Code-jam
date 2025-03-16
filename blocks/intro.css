@@ -1,8 +1,7 @@
 .intro {
   margin: 0 0 20px 60px;
   max-width: 800px;
-  max-height: 271px;
-  display: flex;
+  height: auto;
 }
 
 .intro__text {
@@ -19,7 +18,11 @@
 }
 
 .intro__emoji {
-  position: relative;
   margin: 0 auto;
-  display: flex;
+}
+
+@media (max-width: 775px) {
+  .intro {
+    margin-left: 0;
+  }
 }
