@@ -3,6 +3,9 @@
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header__title {
@@ -12,6 +15,19 @@
   color: #ffffff;
   margin: 28px 0 0;
   padding-left: 60px;
+}
+
+.header__navbar {
+  display: flex;
+  font-size: 32px;
+  color: white;
+  gap: 40px;
+  padding: 20px;
+}
+
+.header__navbar_link {
+  text-decoration: none;
+  color: white;
 }
 
 @media (max-width: 1440px) {
