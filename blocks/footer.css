@@ -5,12 +5,15 @@
   background-repeat: no-repeat;
   background-position: fill;
   background-size: 100%;
+  max-width: 1440px;
+  margin: 20px auto 0px;
 }
 
 .footer__list {
   list-style: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .footer__list-item {

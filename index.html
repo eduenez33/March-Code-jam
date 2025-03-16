@@ -23,43 +23,37 @@
     <main class="main">
       <section class="main__content">
         <section class="intro">
+          <div class="test">
           <p class="intro__text">
             At EcoLink we believe sustainability starts with connection. Our mission is to unite eco-conscious individuals and communities, empowering them to take meaningful action for the planet. Earth Day unites over 1 billion people in 190+ countries—the world’s largest environmental movement.
-
             <br><br>Community cleanups have removed millions of pounds of waste from parks, rivers, and beaches. Our goal is to make finding ways to participate that best match you. We also share global sustainability initiatives to keep you informed and inspired!
             <span style='font-size:50px;' class="intro__emoji">&#127758;</span>
-
           </p>
+        </div>
         </section>
-        <section class="quiz">
-          <div class="quiz__card">
+        <div class="main__content_cards">
+
+        <section class="quiz__card">
+          <div class="quiz__content">
             <h2 class="quiz__title">
               Find Your EcoPersona: Discover your perfect Earth Day activity!
             </h2>
             <button class="quiz__button">Take the quiz!</button>
           </div>
-          <div class="quiz__pop-up quiz__pop-up">
-            <div class="quiz__modal">
-              <h2 class="quiz__question" id="question">Question PLACEHOLDER</h2>
-              <div class="quiz__answers" id="answers">
-                <button class="quiz__button" id="answer" value="1">VALUE 1</button>
-                <button class="quiz__button" id="answer" value="2">VALUE 2</button>
-                <button class="quiz__button" id="answer" value="3">VALUE 3</button>
-                <button class="quiz__button" id="answer" value="4">VALUE 4</button>
-              </div>
-            </div>
-          </div>
-          <div class="quiz__social">
+          </section>
+          <section class="social__card">
+          <div class="social__content">
             <h2 class="social__title">
               Join the EcoSquad:<br class="quiz__text-break"></br> Share, Inspire, Take Action!
             </h2>
-            <div class="social">
+            <div class="social__logos">
               <a href="" class="social__link"><img class="social__icon" src="./images/facebook-new.png"></a>
               <a href="" class="social__link"><img class="social__icon" src="./images/twitterx.png"></a>
               <a href="" class="social__link"><img class="social__icon" src="./images/instagram-new.png"></a>
             </div>
           </div>
         </section>
+      </div>
       </section>
       <section class="cards">
         <div class="cards__container">
@@ -157,6 +151,7 @@
           <button class="eco-squad__button">Find Your Local Eco Group</button>
         </div>
       </section>
+    </main>
       <footer class="footer" id="footer">
         <ul class="footer__list">
           <li class="footer__list-item">
@@ -297,7 +292,19 @@
           <button class="popup__join-button">Join Group</button>
         </div>
       </div>
-    </main>
+<!-- Quiz Popup -->
+      <div class="quiz__pop-up quiz__pop-up">
+        <div class="quiz__modal">
+          <h2 class="quiz__question" id="question">Question PLACEHOLDER</h2>
+          <div class="quiz__answers" id="answers">
+            <button class="quiz__button" id="answer" value="1">VALUE 1</button>
+            <button class="quiz__button" id="answer" value="2">VALUE 2</button>
+            <button class="quiz__button" id="answer" value="3">VALUE 3</button>
+            <button class="quiz__button" id="answer" value="4">VALUE 4</button>
+          </div>
+        </div>
+      </div>
+
     <script src="./scripts/script.js"></script>
   </body>
 </html>
