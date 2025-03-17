@@ -13,38 +13,40 @@
 @import url(../blocks/popup.css);
 @import url(../blocks/footer.css);
 
+/* For larger screens */
+@media (min-width: 769px) {
   @keyframes scrollCards {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(
-        calc(-240px * 8 - 160px)
-      ); /* Adjusted for 8 cards */
+      transform: translateX(calc(-300px * 8));
     }
   }
 }
 
-@keyframes scrollCards {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-280px * 8 - 160px)); /* Adjusted for 8 cards */
+/* For smaller screens */
+@media (max-width: 768px) {
+  @keyframes scrollCards {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-260px * 8));
+    }
   }
 }
 
 @keyframes pulseAnimation {
   0% {
-      transform: scale(1);
+    transform: scale(1);
   }
 
   50% {
-      transform: scale(1.1);
+    transform: scale(1.1);
   }
 
   100% {
-      transform: scale(1);
+    transform: scale(1);
   }
 }
-
