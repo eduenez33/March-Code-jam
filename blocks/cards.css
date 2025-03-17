@@ -1,21 +1,87 @@
 .cards {
   overflow: hidden;
   padding: 40px 0;
+  margin-bottom: 20px;
+}
+
+.cards__wrapper {
+  overflow: hidden;
 }
 
 .cards__container {
   display: flex;
   gap: 20px;
   animation: scrollCards 30s linear infinite;
-  padding: 0 20px;
+  width: fit-content;
+  transition: transform 0.5s ease;
 }
 
 .cards__container:hover {
   animation-play-state: paused;
 }
 
-@media (max-width: 820px) {
+.card {
+  flex: 0 0 280px;
+  text-align: center;
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card__title {
+  margin: 10px 0;
+}
+
+.cards__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 10;
+}
+
+.cards__nav--prev {
+  left: 10px;
+}
+
+.cards__nav--next {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 240px;
+  }
+
   .cards__container {
     animation: scrollCards 20s linear infinite;
+  }
+}
+
+@keyframes scrollCards {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 8));
+  }
+}
+
+@media (max-width: 768px) {
+  @keyframes scrollCards {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-260px * 8));
+    }
   }
 }
