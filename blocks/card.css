@@ -44,3 +44,9 @@
   text-decoration: none;
   color: #fff;
 }
+
+@media (max-width: 820px) {
+  .card {
+    min-width: 240px;
+  }
+}

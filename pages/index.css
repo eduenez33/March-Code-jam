@@ -13,71 +13,12 @@
 @import url(../blocks/popup.css);
 @import url(../blocks/footer.css);
 
-@media (max-width: 1289px) {
-  .main__content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 70px;
+@keyframes scrollCards {
+  0% {
+    transform: translateX(0);
   }
-
-  .intro {
-    width: 90%;
-    max-width: 800px;
-  }
-
-  .intro__text {
-    padding-bottom: 100px;
-  }
-  .quiz__card {
-    width: 90%;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .quiz__content {
-    width: 80%;
-    padding-top: 30px;
-  }
-
-  .social {
-    width: 80%;
-    margin-top: 20px;
-    margin-bottom: 200px;
-  }
-}
-
-@media (max-width: 768px) {
-  .eco-squad__features {
-    grid-template-columns: 1fr;
-  }
-
-  .eco-squad__stats {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .eco-squad {
-    padding: 40px 20px;
-  }
-
-  .cards__container {
-    animation: scrollCards 20s linear infinite;
-  }
-
-  .card {
-    min-width: 240px;
-  }
-
-  @keyframes scrollCards {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-240px * 4 - 80px));
-    }
+  100% {
+    transform: translateX(calc(-240px * 4 - 80px));
   }
 }
 
