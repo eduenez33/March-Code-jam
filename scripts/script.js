@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const openButton = document.querySelector(".eco-squad__button");
   const closeButton = document.querySelector(".popup__close");
   const joinButton = document.querySelector(".popup__join-button");
+  const quizLink = document.getElementById("quiz-link");
 
   // Quiz elements
   const quizPopup = document.querySelector(".quiz__pop-up");
@@ -12,6 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Quiz button click handler
   quizButton.addEventListener("click", () => {
+    quizPopup.classList.add("quiz__pop-up_opened");
+    displayQuestion(currentQuestion);
+  });
+
+  // Quiz link click handler
+  quizLink.addEventListener("click", () => {
     quizPopup.classList.add("quiz__pop-up_opened");
     displayQuestion(currentQuestion);
   });
