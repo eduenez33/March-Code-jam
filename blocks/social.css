@@ -2,7 +2,6 @@
   gap: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   justify-content: space-evenly;
   background-color: #2a3a54;
@@ -10,11 +9,22 @@
   max-width: 700px;
 }
 
+.social__icon-container{
+  display: flex;
+  justify-content: space-evenly;
+  gap: 60px;
+}
 .social__icon {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border: none;
   padding: 5px;
+
+}
+
+.social__icon:hover{
+  transform: scale(1.5);
+  transition: 1.5s;
 }
 
 .social__title {
@@ -30,14 +40,24 @@
   padding: 20px;
 }
 
-.social__logos {
-  display: flex;
-  justify-content: space-evenly;
-}
 
 @media screen and (max-width: 1290px) {
   .social {
     width: 80%;
     margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:320px){
+  .social__icon-container{
+    gap: 10px;
+  }
+  .social__icon{
+    height: 40px;
+    width: 40px;
+  }
+
+  .social__title{
+    font-size: 18px;
   }
 }

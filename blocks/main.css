@@ -10,6 +10,8 @@
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 @media (max-width: 1290px) {
@@ -23,3 +25,4 @@
     flex-direction: row;
   }
 }
+

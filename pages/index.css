@@ -1,5 +1,5 @@
 @import url(../vendor/normalize.css);
-@import url(../vendor/fonts/Jura.ttf); /*Not working on live server will look into*/
+@import url(../vendor/fonts/Jura.ttf);
 @import url(../blocks/page.css);
 @import url(../blocks/main.css);
 @import url(../blocks/header.css);
@@ -30,3 +30,18 @@
     transform: translateX(calc(-280px * 4 - 80px));
   }
 }
+
+@keyframes pulseAnimation {
+  0% {
+      transform: scale(1);
+  }
+
+  50% {
+      transform: scale(1.1);
+  }
+
+  100% {
+      transform: scale(1);
+  }
+}
+
