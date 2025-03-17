@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
   background-color: #2a3a54;
   border-radius: 20px;
   max-width: 700px;
@@ -15,6 +14,7 @@
   height: 40px;
   border: none;
   padding: 5px;
+  justify-content: space-evenly;
 }
 
 .social__title {
