@@ -31,21 +31,12 @@
   color: white;
 }
 
-@media (max-width: 1290px) {
-}
-/* .header {
+@media (max-width: 820px) {
+  .header {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
   }
-
-  .header__navbar {
-    justify-content: space-between;
-    align-items: center;
-  }
-} */
-
-@media (max-width: 775px) {
   .header__title {
     font-size: 48px;
     padding-left: 20px;
@@ -53,5 +44,8 @@
 
   .header__navbar {
     font-size: 24px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
   }
 }

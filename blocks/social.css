@@ -1,5 +1,9 @@
 .social {
   gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   justify-content: space-evenly;
   background-color: #2a3a54;
   border-radius: 20px;
@@ -31,10 +35,9 @@
   justify-content: space-evenly;
 }
 
-@media screen and (max-width:1230px) {
-  .social{
-    max-width: 400px;
-    margin-top: 100px;
+@media screen and (max-width: 1290px) {
+  .social {
+    width: 80%;
+    margin-top: 20px;
   }
-
 }

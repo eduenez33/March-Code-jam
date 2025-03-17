@@ -1,7 +1,6 @@
 .cards {
   overflow: hidden;
   padding: 40px 0;
-  margin-bottom: 20px;
 }
 
 .cards__container {
@@ -13,4 +12,10 @@
 
 .cards__container:hover {
   animation-play-state: paused;
+}
+
+@media (max-width: 820px) {
+  .cards__container {
+    animation: scrollCards 20s linear infinite;
+  }
 }
