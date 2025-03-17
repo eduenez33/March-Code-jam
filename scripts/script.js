@@ -111,10 +111,45 @@ document.addEventListener("DOMContentLoaded", () => {
     displayQuestion(currentQuestion);
   });
 
-  // Close Quiz Popup handler
-  quizCloseButton.addEventListener("click", () => {
+  // Function to close quiz popup and reset
+  const closeQuizPopup = () => {
+    // Clear the answers container immediately
+    const answersContainer = document.getElementById("answers");
+    const questionElement = document.getElementById("question");
+    if (answersContainer) {
+      answersContainer.innerHTML = "";
+    }
+    if (questionElement) {
+      questionElement.textContent = "";
+    }
+
+    // Remove class to hide the popup
     quizPopup.classList.remove("quiz__pop-up_opened");
     document.body.style.overflow = "";
+
+    // Reset quiz state
+    currentQuestion = 0;
+    userAnswers = [];
+  };
+
+  // Close Quiz Popup when clicking the X button
+  quizCloseButton.addEventListener("click", closeQuizPopup);
+
+  // Close quiz when clicking outside the modal
+  quizPopup.addEventListener("click", (e) => {
+    if (e.target === quizPopup) {
+      closeQuizPopup();
+    }
+  });
+
+  // Close quiz with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      quizPopup.classList.contains("quiz__pop-up_opened")
+    ) {
+      closeQuizPopup();
+    }
   });
 
   // Function to display current question
@@ -185,27 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
       displayQuestion(currentQuestion);
     });
   }
-
-  // Close quiz when clicking outside
-  quizPopup.addEventListener("click", (e) => {
-    if (e.target === quizPopup) {
-      quizPopup.classList.remove("quiz__pop-up_opened");
-      currentQuestion = 0;
-      userAnswers = [];
-    }
-  });
-
-  // Close quiz with Escape key
-  document.addEventListener("keydown", (e) => {
-    if (
-      e.key === "Escape" &&
-      quizPopup.classList.contains("quiz__pop-up_opened")
-    ) {
-      quizPopup.classList.remove("quiz__pop-up_opened");
-      currentQuestion = 0;
-      userAnswers = [];
-    }
-  });
 
   // Eco-squad popup functionality
   openButton.addEventListener("click", () => {
