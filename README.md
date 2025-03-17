@@ -1,7 +1,7 @@
 # EcoLink:
 
 ## Overview
-EcoLink is a community-driven platform designed to make sustainable living fun, easy, and social. Whether you're looking to join an EcoSquad, discover your EcoPersona, or dive into sustainability topics with EcoPods, our app helps you take meaningful action for the planet.  
+EcoLink is a community-driven platform designed to make sustainable living fun, easy, and social. Whether you're looking to join an EcoSquad, discover your EcoPersona, or dive into sustainability topics with EcoPods, our app helps you take meaningful action for the planet. To see the page, visit https://eduenez33.github.io/March-Code-jam/ in your browser!
 
 ## Technologies used
 This project is built with modern web technologies:
