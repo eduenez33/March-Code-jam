@@ -1,0 +1,41 @@
+.ecopods {
+  background-color: rgb(42, 58, 84);
+  padding: 60px 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.ecopods__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.ecopods__description {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0 auto 40px;
+  max-width: 600px;
+}
+
+.ecopods__pods-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 310px);
+  justify-content: center;
+  gap: 20px 40px;
+}
+
+.ecopods__pod-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 20px 0 0;
+}
+
+.ecopods__pod-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
