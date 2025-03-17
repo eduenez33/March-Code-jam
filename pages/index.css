@@ -39,7 +39,9 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-240px * 4 - 80px));
+      transform: translateX(
+        calc(-240px * 8 - 160px)
+      ); /* Adjusted for 8 cards */
     }
   }
 }
@@ -49,6 +51,6 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-280px * 4 - 80px));
+    transform: translateX(calc(-280px * 8 - 160px)); /* Adjusted for 8 cards */
   }
 }
