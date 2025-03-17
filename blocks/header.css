@@ -32,8 +32,9 @@
   cursor: pointer;
 }
 
-.header__navbar_link:hover {
-  color: grey;
+.header__navbar_link:hover{
+  opacity: 40%;
+  transition: 0.5s;
 }
 
 @media (max-width: 930px) {

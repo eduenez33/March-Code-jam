@@ -157,7 +157,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 680px) {
   .quiz__title {
     font-size: 16px;
   }
@@ -176,5 +176,11 @@
 
   .quiz__button-result {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .quiz__modal {
+    height: 44%;
   }
 }
