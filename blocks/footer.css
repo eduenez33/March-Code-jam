@@ -3,7 +3,7 @@
   text-align: center;
   background-image: url(../images/Earth.jpg);
   background-repeat: no-repeat;
-  background-position:center;
+  background-position: center;
   background-size: 100%;
   max-width: 1440px;
   margin: 20px auto 0px;
@@ -50,11 +50,11 @@
   padding: 2px;
   font-size: 24px;
   text-decoration: solid;
-  background-color:rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 40px;
 }
 
-.footer__social-link:hover{
+.footer__social-link:hover {
   color: #4a6aff;
   opacity: 80%;
   box-shadow: 0px 0px 10px 0px white;
@@ -73,7 +73,15 @@
   padding-top: 20px;
 }
 
-@media (max-width: 1002px) {
+/* Add padding for screens wider than 1000px */
+@media (min-width: 1001px) {
+  .footer {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 1000px) {
   .footer__list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -87,8 +95,8 @@
   }
 }
 
-@media (max-width:1000px){
-  .footer{
+@media (max-width: 1000px) {
+  .footer {
     background-size: cover;
   }
 }
