@@ -19,12 +19,12 @@
   height: 60px;
   border: none;
   padding: 5px;
-
 }
 
 .social__icon:hover{
   transform: scale(1.5);
   transition: 1.5s;
+  justify-content: space-evenly;
 }
 
 .social__title {
@@ -33,9 +33,6 @@
   text-align: center;
   line-height: 1;
   font-weight: 600;
-  margin-bottom: 40px;
-  max-width: 430px;
-  max-height: 50px;
   font-weight: 600;
   padding: 20px;
 }

@@ -2,7 +2,6 @@
   display: flex;
   gap: 30px;
   flex-direction: column;
-  max-width: 500px;
 }
 
 .quiz__content {
@@ -12,6 +11,7 @@
   background-color: #2a3a54;
   padding: 20px;
   border-radius: 20px;
+  max-width: 700px;
 }
 
 .quiz__title {
@@ -57,6 +57,7 @@
   right: 0;
   visibility: hidden;
   z-index: 1;
+  object-fit: fill;
 }
 
 .quiz__pop-up_opened {
@@ -68,11 +69,16 @@
   border-radius: 20px;
   max-width: 600px;
   width: 90%;
-  height: 550px;
+  height: auto;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .quiz__close {
@@ -83,7 +89,6 @@
   background: none;
   border: none;
   color: #ffffff;
-  font-size: 24px;
   cursor: pointer;
   padding: 5px;
   line-height: 1;
@@ -93,16 +98,15 @@
   font-family: "Jura", "Montserrat", sans-serif;
   text-align: center;
   margin: 0;
-  padding: 30px;
+  padding: 0px 25px 30px;
   font-size: 24px;
 }
 
 .quiz__answers {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 40px;
+  gap: 30px;
 }
 
 .quiz__label {
@@ -120,7 +124,6 @@
   text-align: center;
   line-height: 2;
   font-weight: 600;
-  padding: 20px;
 }
 .quiz__button-result {
   font-family: "Jura", "Montserrat", sans-serif;
@@ -128,14 +131,14 @@
   background-color: #5a7aff;
   color: #ffffff;
   border: none;
-  padding: 12px 24px;
+  padding: 20px;
   border-radius: 5px;
   font-size: 24px;
   cursor: pointer;
   transition: all 0.3s;
   width: 90%;
   display: block;
-  margin: 50px auto;
+  margin: 10px auto;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -145,30 +148,34 @@
     justify-content: center;
     align-items: center;
     width: 90%;
-    max-width: 800px;
     display: flex;
     flex-direction: column;
   }
 
   .quiz__content {
     width: 80%;
-    padding-top: 30px;
-  }
-
-  .quiz__button-result {
-    width: 70%;
-    margin: 50px auto;
-    padding: 20px;
   }
 }
 
 @media (max-width: 680px) {
   .quiz__title {
-    font-size: 20px;
+    font-size: 16px;
   }
 
-  .quiz__modal {
-    height: 34%;
+  .quiz__result {
+    font-size: 16px;
+  }
+
+  .quiz__button {
+    font-size: 10px;
+  }
+
+  .quiz__question {
+    font-size: 14px;
+  }
+
+  .quiz__button-result {
+    font-size: 12px;
   }
 }
 

@@ -59,6 +59,7 @@
   opacity: 80%;
   box-shadow: 0px 0px 10px 0px white;
   animation: pulseAnimation 2s linear;
+  text-decoration: none;
 }
 
 .footer__social-icon {
@@ -89,5 +90,14 @@
 @media (max-width:1000px){
   .footer{
     background-size: cover;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__list {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
   }
 }
