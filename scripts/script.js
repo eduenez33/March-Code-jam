@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("ecoPopup");
   const openButton = document.querySelector(".eco-squad__button");
-  const closeButton = document.querySelector(".popup__close");
+  const ecoCloseButton = document.querySelector(".popup__close");
   const joinButton = document.querySelector(".popup__join-button");
   const quizLink = document.getElementById("quiz-link");
+  const quizCloseButton = document.querySelector(".quiz__close");
 
   // Quiz elements
   const quizPopup = document.querySelector(".quiz__pop-up");
@@ -21,6 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
   quizLink.addEventListener("click", () => {
     quizPopup.classList.add("quiz__pop-up_opened");
     displayQuestion(currentQuestion);
+  });
+
+  // Close Quiz Popup handler
+  quizCloseButton.addEventListener("click", () => {
+    quizPopup.classList.remove("quiz__pop-up_opened");
+    document.body.style.overflow = "";
   });
 
   // Function to display current question
@@ -119,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "hidden";
   });
 
-  closeButton.addEventListener("click", () => {
+  ecoCloseButton.addEventListener("click", () => {
     popup.classList.remove("active");
     document.body.style.overflow = "";
   });
