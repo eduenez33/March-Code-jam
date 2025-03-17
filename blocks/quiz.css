@@ -11,6 +11,7 @@
   background-color: #2a3a54;
   padding: 20px;
   border-radius: 20px;
+  max-width: 700px;
 }
 
 .quiz__title {
