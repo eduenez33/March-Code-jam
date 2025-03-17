@@ -39,3 +39,20 @@
   width: 200px;
   border-radius: 50%;
 }
+
+@media screen and (max-width: 790px) {
+  .ecopods__pods-container {
+    grid-template-columns: repeat(auto-fit, 200px);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .ecopods__pod-image {
+    height: 150px;
+    width: 150px;
+  }
+
+  .ecopods__pods-container {
+    grid-template-columns: repeat(auto-fit, 180px);
+  }
+}
