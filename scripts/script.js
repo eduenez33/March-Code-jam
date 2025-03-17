@@ -1,4 +1,91 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const cardsContainer = document.querySelector(".cards__container");
+  const wrapper = document.querySelector(".cards__wrapper");
+  const prevBtn = document.querySelector(".cards__nav--prev");
+  const nextBtn = document.querySelector(".cards__nav--next");
+
+  if (cardsContainer && wrapper && prevBtn && nextBtn) {
+    // Clone cards for infinite scroll
+    const uniqueCards = Array.from(
+      cardsContainer.querySelectorAll(".card")
+    ).slice(0, 8);
+    uniqueCards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      cardsContainer.appendChild(clone);
+    });
+
+    const cardWidth = uniqueCards[0].offsetWidth + 20; // Card width + gap
+    const totalUniqueWidth = cardWidth * 8; // Width of original 8 cards
+    let currentPosition = 0;
+    let autoScrollInterval;
+
+    // Function to update position and handle infinite loop
+    const updatePosition = () => {
+      if (currentPosition <= -totalUniqueWidth) {
+        currentPosition += totalUniqueWidth; // Jump back seamlessly
+        cardsContainer.style.transition = "none"; // No transition for jump
+        cardsContainer.style.transform = `translateX(${currentPosition}px)`;
+        cardsContainer.offsetHeight; // Trigger reflow
+        cardsContainer.style.transition = "transform 0.5s ease"; // Re-enable transition
+      } else if (currentPosition > 0) {
+        currentPosition -= totalUniqueWidth; // Jump to end if past start
+        cardsContainer.style.transition = "none";
+        cardsContainer.style.transform = `translateX(${currentPosition}px)`;
+        cardsContainer.offsetHeight;
+        cardsContainer.style.transition = "transform 0.5s ease";
+      }
+      cardsContainer.style.transform = `translateX(${currentPosition}px)`;
+    };
+
+    // Function to start auto-scrolling
+    const startAutoScroll = () => {
+      stopAutoScroll(); // Clear any existing interval first
+      autoScrollInterval = setInterval(() => {
+        currentPosition -= cardWidth / 50; // Smooth slow scrolling
+        updatePosition();
+      }, 20);
+    };
+
+    // Function to stop auto-scrolling
+    const stopAutoScroll = () => {
+      if (autoScrollInterval) {
+        clearInterval(autoScrollInterval);
+      }
+    };
+
+    // Next button: move left
+    nextBtn.addEventListener("click", () => {
+      stopAutoScroll(); // Pause auto-scroll
+      currentPosition -= cardWidth;
+      updatePosition();
+      setTimeout(startAutoScroll, 1000); // Resume auto-scroll after 1 second
+    });
+
+    // Prev button: move right
+    prevBtn.addEventListener("click", () => {
+      stopAutoScroll(); // Pause auto-scroll
+      currentPosition += cardWidth;
+      updatePosition();
+      setTimeout(startAutoScroll, 1000); // Resume auto-scroll after 1 second
+    });
+
+    // Pause on hover
+    cardsContainer.addEventListener("mouseenter", () => {
+      stopAutoScroll();
+    });
+
+    // Resume on mouse leave
+    cardsContainer.addEventListener("mouseleave", () => {
+      startAutoScroll();
+    });
+
+    // Initial position
+    cardsContainer.style.transform = `translateX(${currentPosition}px)`;
+
+    // Start auto-scrolling
+    startAutoScroll();
+  }
+
   const popup = document.getElementById("ecoPopup");
   const openButton = document.querySelector(".eco-squad__button");
   const ecoCloseButton = document.querySelector(".popup__close");
