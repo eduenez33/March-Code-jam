@@ -45,6 +45,11 @@
   justify-content: center;
   padding: 2px;
   font-size: 24px;
+  text-decoration: none;
+}
+
+.footer__social-link:hover {
+  color: grey;
 }
 
 .footer__social-icon {
@@ -69,5 +74,14 @@
   .footer__list-item {
     padding: 20px;
     text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__list {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
   }
 }

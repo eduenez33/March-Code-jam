@@ -23,16 +23,13 @@
   text-align: center;
   line-height: 1;
   font-weight: 600;
-  margin-bottom: 40px;
-  max-width: 430px;
-  max-height: 50px;
   font-weight: 600;
   padding: 20px;
 }
 
 .social__logos {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 1290px) {

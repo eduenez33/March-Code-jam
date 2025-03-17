@@ -26,3 +26,9 @@
     padding: 10px 0 30px;
   }
 }
+
+@media (max-width: 462px) {
+  .intro__text {
+    font-size: 14px;
+  }
+}
