@@ -170,8 +170,16 @@
     font-size: 10px;
   }
 
+  .quiz__modal {
+    width: 69%;
+  }
+
   .quiz__question {
     font-size: 14px;
+  }
+
+  .quiz__answers {
+    gap: 20px;
   }
 
   .quiz__button-result {
@@ -179,8 +187,12 @@
   }
 }
 
-@media (max-width: 320px) {
-  .quiz__modal {
-    height: 44%;
+@media (max-width: 450px) {
+  .quiz__button {
+    font-size: 8px;
+  }
+
+  .quiz__question {
+    font-size: 10px;
   }
 }
