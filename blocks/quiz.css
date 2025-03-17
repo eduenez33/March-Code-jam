@@ -1,18 +1,17 @@
 .quiz__card {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   max-height: 202px;
   flex-direction: column;
-  background-color: #2a3a54;
-  padding: 20px;
-  border-radius: 10px;
-  flex: 1;
+  max-width: 500px;
 }
 
 .quiz__content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;background-color: #2a3a54;
+ padding: 20px;
+  border-radius: 10px;
 }
 
 .quiz__title {
@@ -35,13 +34,12 @@
   border: none;
   padding: 12px 24px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   transition: all 0.3s;
-  width: 60%;
+  width: 80%;
   display: block;
   margin: 0 auto;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
@@ -62,7 +60,6 @@
   bottom: 0;
   right: 0;
   visibility: hidden;
-  border-radius: 20px;
   z-index: 1;
 }
 
@@ -74,12 +71,12 @@
   background-color: #2a3a54;
   border-radius: 20px;
   max-width: 600px;
+  width: 90%;
+  height: 550px;
   position: fixed;
-  top: 30%;
-  left: 30%;
-  bottom: 30%;
-  right: 30%;
-  height: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .quiz__question {
@@ -107,9 +104,59 @@
   margin-bottom: 10px;
 }
 
+.quiz__result {
+  font-family: "Jura", "Montserrat", sans-serif;
+  font-size: 25px;
+  text-align: center;
+  line-height: 2;
+  font-weight: 600;
+  padding: 20px;
+}
+.quiz__button-result {
+  font-family: "Jura", "Montserrat", sans-serif;
+  font-weight: 1000;
+  background-color: #5a7aff;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 90%;
+  display: block;
+  margin: 50px auto;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 @media (max-width: 1290px) {
   .quiz__card {
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media (min-width: 1230px) {
+  .quiz__card{
+    height: 100px;
+  }
+  .quiz__card{
+
+  }
+  .quiz__button-result {
+    width: 70%;
+    margin: 50px auto;
+    padding:20px;
+  }
+}
+
+@media (max-width:550px){
+  .quiz__title{
+    font-size: 20px;
+  }
+
+  .quiz__modal{
+    height: 34%;
   }
 }
