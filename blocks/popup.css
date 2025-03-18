@@ -27,25 +27,15 @@
 
 .popup__close {
   position: absolute;
-  z-index: 2;
-  top: 12px;
-  right: 12px;
-  background-color: rgba(90, 122, 255, 0.2);
+  top: 20px;
+  right: 20px;
+  background: none;
   border: none;
-  border-radius: 50%;
   color: #ffffff;
-  cursor: pointer;
-  padding: 10px 13px;
   font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
   line-height: 1;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.popup__close:hover {
-  background-color: rgba(90, 122, 255, 0.4);
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .popup__title {
