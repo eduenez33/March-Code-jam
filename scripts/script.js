@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       smoothAdvance(1);
     });
 
-    // Pause on hover
+    // Pause on hover over cards
     cardsContainer.addEventListener("mouseenter", () => {
       // Get current computed position before stopping
       const computedStyle = window.getComputedStyle(cardsContainer);
@@ -163,8 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardsContainer.style.transform = `translateX(${currentPosition}px)`;
     });
 
-    // TEST -----------
-
+    // Pause on hover over previous button
     prevBtn.addEventListener("mouseenter", () => {
       // Get current computed position before stopping
       const computedStyle = window.getComputedStyle(cardsContainer);
@@ -177,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardsContainer.style.transform = `translateX(${currentPosition}px)`;
     });
 
+    // Pause on hover over next button
     nextBtn.addEventListener("mouseenter", () => {
       // Get current computed position before stopping
       const computedStyle = window.getComputedStyle(cardsContainer);
@@ -188,8 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cardsContainer.style.transition = "none";
       cardsContainer.style.transform = `translateX(${currentPosition}px)`;
     });
-
-    // TEST ------------
 
     // Resume on mouse leave
     cardsContainer.addEventListener("mouseleave", () => {
