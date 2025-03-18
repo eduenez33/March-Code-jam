@@ -40,8 +40,7 @@
 }
 
 .ecopods__pod:hover {
-  box-shadow: 0px 0px 20px 0px white;
-  transform: scale(1.05);
+  transform: scale(1.2);
 }
 
 .ecopods__pod-title {
@@ -52,6 +51,7 @@
 }
 
 .ecopods__pod-image {
+  margin-top: 20px;
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -59,6 +59,10 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
+}
+
+.ecopods__pod-image:hover{
+  box-shadow: 0px 0px 15px 0px white;
 }
 
 .ecopods__pod:hover .ecopods__pod-image {

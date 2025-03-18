@@ -38,8 +38,7 @@
 .card__title {
   margin: 10px 0;
 }
-
-.cards__nav {
+*.cards__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
