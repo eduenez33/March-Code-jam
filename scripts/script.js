@@ -693,7 +693,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const question = [
   {
-    name: "Question 1: How do you prefer to spend you free time?",
+    name: "Question 1: How do you prefer to spend your free time?",
     id: "Question-1__title",
   },
   {
