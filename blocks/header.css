@@ -17,6 +17,14 @@
   padding-left: 60px;
 }
 
+.header__logo {
+  max-height: 80px;
+  width: auto;
+  display: block;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
 .header__navbar {
   display: flex;
   font-size: 32px;
@@ -32,12 +40,12 @@
   cursor: pointer;
 }
 
-.header__navbar_link:hover{
+.header__navbar_link:hover {
   opacity: 40%;
   transition: 0.5s;
 }
 
-@media (max-width: 930px) {
+@media (max-width: 1200px) {
   .header {
     flex-direction: column;
     justify-content: space-between;
@@ -46,6 +54,12 @@
   .header__title {
     font-size: 48px;
     padding-left: 20px;
+    margin-top: 15px;
+  }
+
+  .header__logo {
+    max-height: 60px;
+    border-radius: 10px;
   }
 
   .header__navbar {
@@ -56,6 +70,22 @@
   }
 }
 
+/* Add intermediate breakpoint to fix nav cutoff */
+@media (max-width: 650px) {
+  .header__title {
+    padding-left: 10px;
+  }
+
+  .header__logo {
+    max-height: 50px;
+  }
+
+  .header__navbar {
+    font-size: 18px;
+    gap: 25px;
+  }
+}
+
 @media (max-width: 462px) {
   .header {
     padding-bottom: 0;
@@ -63,11 +93,19 @@
 
   .header__title {
     font-size: 24px;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+
+  .header__logo {
+    max-height: 40px;
+    border-radius: 8px;
   }
 
   .header__navbar {
     font-size: 14px;
     margin-top: 10px;
     text-wrap: nowrap;
+    gap: 20px;
   }
 }

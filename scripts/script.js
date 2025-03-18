@@ -14,75 +14,175 @@ document.addEventListener("DOMContentLoaded", () => {
       cardsContainer.appendChild(clone);
     });
 
-    const cardWidth = uniqueCards[0].offsetWidth + 20; // Card width + gap
-    const totalUniqueWidth = cardWidth * 8; // Width of original 8 cards
+    // Variables that will be recalculated on resize
+    let cardWidth;
+    let totalUniqueWidth;
     let currentPosition = 0;
     let autoScrollInterval;
 
+    // Different transitions for different purposes
+    const buttonTransition = "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+    const autoScrollTransition = "transform 0.5s linear"; // Linear for continuous scrolling
+
+    // Function to calculate dimensions based on current viewport
+    const calculateDimensions = () => {
+      // Get the current width of a card including gap
+      const cardElement = uniqueCards[0];
+      const cardStyle = window.getComputedStyle(cardElement);
+      const cardWidthValue = cardElement.offsetWidth;
+      const gapValue = parseInt(
+        getComputedStyle(cardsContainer).columnGap || 20
+      );
+
+      cardWidth = cardWidthValue + gapValue;
+
+      // Adjust calculation to account for the full set plus first card for smooth looping
+      totalUniqueWidth = cardWidth * 8;
+
+      // Reset position if needed to avoid being in a strange state
+      if (Math.abs(currentPosition) > totalUniqueWidth * 1.5) {
+        currentPosition = 0;
+        cardsContainer.style.transition = "none";
+        cardsContainer.style.transform = `translateX(0px)`;
+        cardsContainer.offsetHeight; // Force reflow
+      }
+
+      // Adjust animation speed based on viewport width
+      if (autoScrollInterval) {
+        // Restart auto-scroll with new dimensions
+        stopAutoScroll();
+        startAutoScroll();
+      }
+    };
+
     // Function to update position and handle infinite loop
-    const updatePosition = () => {
-      if (currentPosition <= -totalUniqueWidth) {
-        currentPosition += totalUniqueWidth; // Jump back seamlessly
-        cardsContainer.style.transition = "none"; // No transition for jump
+    const updatePosition = (useTransition = true, isAutoScroll = false) => {
+      // Check if we've scrolled past the point where we need to loop
+      if (currentPosition <= -(totalUniqueWidth + cardWidth / 4)) {
+        // Reset to beginning position
+        currentPosition = 0;
+
+        // Disable transition for the position reset
+        cardsContainer.style.transition = "none";
         cardsContainer.style.transform = `translateX(${currentPosition}px)`;
-        cardsContainer.offsetHeight; // Trigger reflow
-        cardsContainer.style.transition = "transform 0.5s ease"; // Re-enable transition
+
+        // Force browser to acknowledge the style change before re-enabling transition
+        cardsContainer.offsetHeight;
+
+        // Re-enable transition if needed
+        if (useTransition) {
+          cardsContainer.style.transition = isAutoScroll
+            ? autoScrollTransition
+            : buttonTransition;
+        }
       } else if (currentPosition > 0) {
-        currentPosition -= totalUniqueWidth; // Jump to end if past start
+        // For backward navigation, move to end of the cloned set
+        currentPosition = -totalUniqueWidth;
+
         cardsContainer.style.transition = "none";
         cardsContainer.style.transform = `translateX(${currentPosition}px)`;
         cardsContainer.offsetHeight;
-        cardsContainer.style.transition = "transform 0.5s ease";
+
+        if (useTransition) {
+          cardsContainer.style.transition = isAutoScroll
+            ? autoScrollTransition
+            : buttonTransition;
+        }
       }
+
+      // Apply the transform
       cardsContainer.style.transform = `translateX(${currentPosition}px)`;
     };
 
     // Function to start auto-scrolling
     const startAutoScroll = () => {
       stopAutoScroll(); // Clear any existing interval first
+
+      // Set initial transition to linear for continuous scrolling
+      cardsContainer.style.transition = autoScrollTransition;
+
+      // Adjust scroll speed based on viewport width
+      const scrollSpeed = window.innerWidth <= 768 ? 120 : 100;
+
       autoScrollInterval = setInterval(() => {
-        currentPosition -= cardWidth / 50; // Smooth slow scrolling
-        updatePosition();
-      }, 20);
+        // Move a fraction of the card width for smooth scrolling
+        // Smaller devices move slightly faster to complete in the same time
+        currentPosition -= cardWidth / scrollSpeed;
+        updatePosition(true, true); // Pass true for isAutoScroll
+      }, 16); // ~60fps for smoother animation
     };
 
     // Function to stop auto-scrolling
     const stopAutoScroll = () => {
       if (autoScrollInterval) {
         clearInterval(autoScrollInterval);
+        autoScrollInterval = null;
       }
     };
 
-    // Next button: move left
+    // Function to smoothly advance by one card
+    const smoothAdvance = (direction) => {
+      // Stop auto-scrolling
+      stopAutoScroll();
+
+      // Set transition for the manual navigation (eased)
+      cardsContainer.style.transition = buttonTransition;
+
+      // Calculate the target position (advancing by exactly one card)
+      currentPosition += direction * cardWidth;
+
+      // Apply the transform
+      updatePosition(true, false); // Pass false for isAutoScroll to use button transition
+
+      // After the transition completes, resume auto-scrolling
+      setTimeout(() => {
+        startAutoScroll();
+      }, 600); // Slightly longer than transition duration to ensure it completes
+    };
+
+    // Next button: move left (negative direction)
     nextBtn.addEventListener("click", () => {
-      stopAutoScroll(); // Pause auto-scroll
-      currentPosition -= cardWidth;
-      updatePosition();
-      setTimeout(startAutoScroll, 1000); // Resume auto-scroll after 1 second
+      smoothAdvance(-1);
     });
 
-    // Prev button: move right
+    // Prev button: move right (positive direction)
     prevBtn.addEventListener("click", () => {
-      stopAutoScroll(); // Pause auto-scroll
-      currentPosition += cardWidth;
-      updatePosition();
-      setTimeout(startAutoScroll, 1000); // Resume auto-scroll after 1 second
+      smoothAdvance(1);
     });
 
     // Pause on hover
     cardsContainer.addEventListener("mouseenter", () => {
+      // Get current computed position before stopping
+      const computedStyle = window.getComputedStyle(cardsContainer);
+      const matrix = new DOMMatrixReadOnly(computedStyle.transform);
+      currentPosition = matrix.m41; // Extract the X translation value
+
+      // Now stop the animation with the exact current position
       stopAutoScroll();
+      cardsContainer.style.transition = "none";
+      cardsContainer.style.transform = `translateX(${currentPosition}px)`;
     });
 
     // Resume on mouse leave
     cardsContainer.addEventListener("mouseleave", () => {
+      // Restore transition before starting auto-scroll
+      cardsContainer.style.transition = autoScrollTransition;
       startAutoScroll();
     });
 
-    // Initial position
-    cardsContainer.style.transform = `translateX(${currentPosition}px)`;
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      // Debounce resize events
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        calculateDimensions();
+      }, 200);
+    });
 
-    // Start auto-scrolling
+    // Initial calculations and setup
+    calculateDimensions();
+    cardsContainer.style.transform = `translateX(${currentPosition}px)`;
     startAutoScroll();
   }
 
