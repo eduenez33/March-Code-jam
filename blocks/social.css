@@ -43,7 +43,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
   .social__icon {
     height: 40px;
     width: 40px;
