@@ -353,6 +353,340 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "";
     }
   });
+
+  // Event-location data with coordinates
+  const events = [
+    {
+      name: "2025 Earth Day Festival",
+      date: "Saturday, April 19th, 2025",
+      location: "Yerba Buena Gardens, San Francisco, CA",
+      coordinates: { lat: 37.7749, lng: -122.4194 },
+    },
+    {
+      name: "Earth Day Marketplace: A Celebration of Sustainable Living",
+      date: "Saturday, April 19th, 2025",
+      location: "Downtown, Santa Monica, CA",
+      coordinates: { lat: 34.0161, lng: -118.4962 },
+    },
+    {
+      name: "Earth Day Clean-Up 2025",
+      date: "Tuesday, April 22nd, 2025",
+      location: "USU Botanical Center, Kaysville, UT",
+      coordinates: { lat: 41.0352, lng: -111.9386 },
+    },
+    {
+      name: "Earth Day Parks Clean-Up 2025",
+      date: "Saturday, April 26th, 2025",
+      location: "Smith Park, Chicago, IL",
+      coordinates: { lat: 41.8934, lng: -87.6895 },
+    },
+    {
+      name: "Greenfield Earth Day Clean-Up",
+      date: "Saturday, April 26th, 2025",
+      location: "Magee Recreation Center, Pittsburgh, PA",
+      coordinates: { lat: 40.4244, lng: -79.9368 },
+    },
+    {
+      name: "Broadway Celebrates Earth Day",
+      date: "Saturday, April 26th, 2025",
+      location: "Times Square, New York, NY",
+      coordinates: { lat: 40.758896, lng: -73.98513 },
+    },
+    {
+      name: "Earth Day Celebration: Caminantes de la Nueva Tierra",
+      date: "Saturday, April 26th, 2025",
+      location: "Manuel Artime Theater, Miami, FL",
+      coordinates: { lat: 25.772546, lng: -80.209594 },
+    },
+    {
+      name: "Earth Day Festival",
+      date: "Tuesday, April 22nd, 2025",
+      location: "Atlanta Botanical Garden, Atlanta, GA",
+      coordinates: { lat: 33.79, lng: -84.3726 },
+    },
+    {
+      name: "Earth Day Rail Trail Clean Up",
+      date: "Saturday, April 19th, 2025",
+      location: "New Bern Station, Charlotte, NC",
+      coordinates: { lat: 35.1045, lng: -77.0373 },
+    },
+    {
+      name: "Earth Day Celebration & Community Activation",
+      date: "Saturday, April 19th, 2025",
+      location: "The Portal, Austin, TX",
+      coordinates: { lat: 30.1944, lng: -97.8049 },
+    },
+  ];
+
+  // Function to calculate distance between two points using Haversine formula
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the Earth in km
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLon = ((lon2 - lon1) * Math.PI) / 180;
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) *
+        Math.cos((lat2 * Math.PI) / 180) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in km
+    return distance;
+  }
+
+  // Function to find the closest event to user's location
+  function findClosestEvent(userLat, userLng) {
+    let closestEvent = null;
+    let minDistance = Infinity;
+
+    events.forEach((event) => {
+      const distance = calculateDistance(
+        userLat,
+        userLng,
+        event.coordinates.lat,
+        event.coordinates.lng
+      );
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestEvent = event;
+      }
+    });
+
+    return { event: closestEvent, distance: minDistance };
+  }
+
+  // Function to get user's location and suggest nearest event
+  function suggestNearestEvent() {
+    const locationButton = document.querySelector(".eco-squad__button");
+    const popup = document.getElementById("ecoPopup");
+
+    if (locationButton && popup) {
+      // Store original popup content for when we need to restore it
+      const popupContent = document.querySelector(".popup__content");
+      const originalContent = popupContent ? popupContent.innerHTML : "";
+
+      // Create a permission prompt content
+      const permissionPromptContent = `
+        <button class="popup__close">&times;</button>
+        <h2 class="popup__title">Find Events Near You</h2>
+        <div class="popup__group">
+          <p class="popup__group-description">
+            To show you events closest to your location, we need permission to access your location data.
+          </p>
+        </div>
+        <button class="popup__join-button" id="location-permission-button">Share My Location</button>
+      `;
+
+      // Modify the button's click handler
+      locationButton.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Show popup with permission prompt
+        if (popupContent) {
+          popupContent.innerHTML = permissionPromptContent;
+
+          // Add new close button event listener
+          const newCloseButton = popupContent.querySelector(".popup__close");
+          if (newCloseButton) {
+            newCloseButton.addEventListener("click", () => {
+              popup.classList.remove("active");
+              document.body.style.overflow = "";
+
+              // Restore original content after popup is closed
+              setTimeout(() => {
+                popupContent.innerHTML = originalContent;
+
+                // Reattach original close button event listener
+                const originalCloseButton =
+                  popupContent.querySelector(".popup__close");
+                if (originalCloseButton) {
+                  originalCloseButton.addEventListener("click", () => {
+                    popup.classList.remove("active");
+                    document.body.style.overflow = "";
+                  });
+                }
+              }, 300);
+            });
+          }
+        }
+
+        // Show the popup
+        popup.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        // Add click handler to the permission button
+        const permissionButton = document.getElementById(
+          "location-permission-button"
+        );
+        if (permissionButton) {
+          permissionButton.addEventListener("click", () => {
+            if ("geolocation" in navigator) {
+              permissionButton.textContent = "Locating...";
+              permissionButton.disabled = true;
+
+              navigator.geolocation.getCurrentPosition(
+                (position) => {
+                  const userLat = position.coords.latitude;
+                  const userLng = position.coords.longitude;
+
+                  const { event: closestEvent, distance } = findClosestEvent(
+                    userLat,
+                    userLng
+                  );
+
+                  // Update popup with closest event information
+                  if (popupContent) {
+                    popupContent.innerHTML = `
+                      <button class="popup__close">&times;</button>
+                      <h2 class="popup__title">Closest Event To You</h2>
+                      <div class="popup__group">
+                        <h3 class="popup__group-name">${closestEvent.name}</h3>
+                        <p class="popup__group-description">
+                          This event is approximately ${Math.round(
+                            distance
+                          )} km away from your current location.
+                        </p>
+                      </div>
+                      <div class="popup__activity">
+                        <h3 class="popup__activity-title">Event Details</h3>
+                        <p class="popup__activity-details">
+                          ${closestEvent.name} - ${closestEvent.date}
+                        </p>
+                        <p class="popup__activity-location">📍 ${
+                          closestEvent.location
+                        }</p>
+                      </div>
+                      <button class="popup__join-button">Register for Event</button>
+                    `;
+
+                    // Add new close button event listener
+                    const newCloseButton =
+                      popupContent.querySelector(".popup__close");
+                    if (newCloseButton) {
+                      newCloseButton.addEventListener("click", () => {
+                        popup.classList.remove("active");
+                        document.body.style.overflow = "";
+                      });
+                    }
+
+                    // Add join button event listener
+                    const joinButton = popupContent.querySelector(
+                      ".popup__join-button"
+                    );
+                    if (joinButton) {
+                      joinButton.addEventListener("click", () => {
+                        alert(
+                          "Thank you for registering! We'll send you more details about the upcoming event."
+                        );
+                        popup.classList.remove("active");
+                        document.body.style.overflow = "";
+                      });
+                    }
+                  }
+                },
+                (error) => {
+                  if (popupContent) {
+                    popupContent.innerHTML = `
+                      <button class="popup__close">&times;</button>
+                      <h2 class="popup__title">Location Error</h2>
+                      <div class="popup__group">
+                        <p class="popup__group-description">
+                          We couldn't access your location. Please try again later or browse all available events.
+                        </p>
+                      </div>
+                      <button class="popup__join-button" id="view-all-events">View All Events</button>
+                    `;
+
+                    // Add new close button event listener
+                    const newCloseButton =
+                      popupContent.querySelector(".popup__close");
+                    if (newCloseButton) {
+                      newCloseButton.addEventListener("click", () => {
+                        popup.classList.remove("active");
+                        document.body.style.overflow = "";
+
+                        // Restore original content after popup is closed
+                        setTimeout(() => {
+                          popupContent.innerHTML = originalContent;
+                        }, 300);
+                      });
+                    }
+
+                    // Add view all events button event listener
+                    const viewAllButton =
+                      document.getElementById("view-all-events");
+                    if (viewAllButton) {
+                      viewAllButton.addEventListener("click", () => {
+                        // Show original content with all events
+                        popupContent.innerHTML = originalContent;
+
+                        // Reattach original close button event listener
+                        const originalCloseButton =
+                          popupContent.querySelector(".popup__close");
+                        if (originalCloseButton) {
+                          originalCloseButton.addEventListener("click", () => {
+                            popup.classList.remove("active");
+                            document.body.style.overflow = "";
+                          });
+                        }
+                      });
+                    }
+                  }
+                }
+              );
+            } else {
+              if (popupContent) {
+                popupContent.innerHTML = `
+                  <button class="popup__close">&times;</button>
+                  <h2 class="popup__title">Geolocation Not Supported</h2>
+                  <div class="popup__group">
+                    <p class="popup__group-description">
+                      Your browser doesn't support geolocation. Please try using a different browser or view all available events.
+                    </p>
+                  </div>
+                  <button class="popup__join-button" id="view-all-events">View All Events</button>
+                `;
+
+                // Add new close button event listener
+                const newCloseButton =
+                  popupContent.querySelector(".popup__close");
+                if (newCloseButton) {
+                  newCloseButton.addEventListener("click", () => {
+                    popup.classList.remove("active");
+                    document.body.style.overflow = "";
+                  });
+                }
+
+                // Add view all events button event listener
+                const viewAllButton =
+                  document.getElementById("view-all-events");
+                if (viewAllButton) {
+                  viewAllButton.addEventListener("click", () => {
+                    // Show original content with all events
+                    popupContent.innerHTML = originalContent;
+
+                    // Reattach original close button event listener
+                    const originalCloseButton =
+                      popupContent.querySelector(".popup__close");
+                    if (originalCloseButton) {
+                      originalCloseButton.addEventListener("click", () => {
+                        popup.classList.remove("active");
+                        document.body.style.overflow = "";
+                      });
+                    }
+                  });
+                }
+              }
+            }
+          });
+        }
+      });
+    }
+  }
+
+  // Initialize location feature
+  suggestNearestEvent();
 });
 
 //Quiz Arrays and Functions
