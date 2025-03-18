@@ -12,7 +12,7 @@ This project is built with modern web technologies:
 - **CSS:**  
   Powers our design with clean, responsive, and engaging styles, making sure the platform looks great on any device.
 
-- **JavaScript (JS):**  
+- **JavaScript:**  
   Drives interactivity and dynamic content throughout the site, delivering a smooth and responsive user experience. 
 
 
@@ -30,9 +30,6 @@ Due to the time constraint we were not able to implement all the features we'd h
 
 -**EcoChallenges**:
   Weekly or monthly challenges for users to participate in. Challenges can include "Zero-Waste Week", "Plastic-Free Month", etc. 
-
--**EcoMap**:
-An interactive API that links users to local green initiatives near them. 
 
 -**EcoIcons**:
 A monthly section that highlights ecological pioneers in various fields from engineering to greener government policies and more. 
