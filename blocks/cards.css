@@ -15,13 +15,8 @@
 .cards__container {
   display: flex;
   gap: 20px;
-  animation: scrollCards 30s linear infinite;
   width: fit-content;
-  transition: transform 0.5s ease;
-}
-
-.cards__container:hover {
-  animation-play-state: paused;
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .card {
@@ -46,10 +41,17 @@
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 10px;
+  padding: 10px 15px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 24px;
   z-index: 10;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.cards__nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .cards__nav--prev {
@@ -63,29 +65,5 @@
 @media (max-width: 768px) {
   .card {
     flex: 0 0 240px;
-  }
-
-  .cards__container {
-    animation: scrollCards 20s linear infinite;
-  }
-}
-
-@keyframes scrollCards {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-300px * 8));
-  }
-}
-
-@media (max-width: 768px) {
-  @keyframes scrollCards {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-260px * 8));
-    }
   }
 }
