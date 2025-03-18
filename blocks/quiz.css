@@ -119,14 +119,14 @@
   gap: 30px;
 }
 
-.quiz__label {
+/* .quiz__label {
   display: inline-block;
   background-color: #4a5a74;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
   margin-bottom: 10px;
-}
+} */
 
 .quiz__result {
   font-family: "Jura", "Montserrat", sans-serif;
@@ -135,6 +135,7 @@
   line-height: 2;
   font-weight: 600;
 }
+
 .quiz__button-result {
   font-family: "Jura", "Montserrat", sans-serif;
   font-weight: 1000;
@@ -172,10 +173,6 @@
     font-size: 16px;
   }
 
-  .quiz__result {
-    font-size: 16px;
-  }
-
   .quiz__button {
     font-size: 10px;
   }
@@ -190,6 +187,10 @@
 
   .quiz__answers {
     gap: 20px;
+  }
+
+  .quiz__result {
+    font-size: 16px;
   }
 
   .quiz__button-result {

@@ -2,7 +2,7 @@
   background-color: rgb(42, 58, 84);
   padding: 60px 40px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 10px;
 }
 
@@ -61,7 +61,7 @@
   object-fit: cover;
 }
 
-.ecopods__pod-image:hover{
+.ecopods__pod-image:hover {
   box-shadow: 0px 0px 15px 0px white;
 }
 
