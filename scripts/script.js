@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // After the transition completes, resume auto-scrolling
       setTimeout(() => {
         startAutoScroll();
-      }, 600); // Slightly longer than transition duration to ensure it completes
+      }, 3000); // Slightly longer than transition duration to ensure it completes
     };
 
     // Next button: move left (negative direction)
@@ -162,6 +162,34 @@ document.addEventListener("DOMContentLoaded", () => {
       cardsContainer.style.transition = "none";
       cardsContainer.style.transform = `translateX(${currentPosition}px)`;
     });
+
+    // TEST -----------
+
+    prevBtn.addEventListener("mouseenter", () => {
+      // Get current computed position before stopping
+      const computedStyle = window.getComputedStyle(cardsContainer);
+      const matrix = new DOMMatrixReadOnly(computedStyle.transform);
+      currentPosition = matrix.m41; // Extract the X translation value
+
+      // Now stop the animation with the exact current position
+      stopAutoScroll();
+      cardsContainer.style.transition = "none";
+      cardsContainer.style.transform = `translateX(${currentPosition}px)`;
+    });
+
+    nextBtn.addEventListener("mouseenter", () => {
+      // Get current computed position before stopping
+      const computedStyle = window.getComputedStyle(cardsContainer);
+      const matrix = new DOMMatrixReadOnly(computedStyle.transform);
+      currentPosition = matrix.m41; // Extract the X translation value
+
+      // Now stop the animation with the exact current position
+      stopAutoScroll();
+      cardsContainer.style.transition = "none";
+      cardsContainer.style.transform = `translateX(${currentPosition}px)`;
+    });
+
+    // TEST ------------
 
     // Resume on mouse leave
     cardsContainer.addEventListener("mouseleave", () => {
